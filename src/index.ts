@@ -22,34 +22,26 @@
  * ```
  */
 export const parse = (text: string) => {
-    try {
-        const headerRegex = /\/\*\s*([\s\S]*?)\s*\*\//
-        const match = text.match(headerRegex)
+    const regex = /\/\*\s*([\s\S]*?)\s*\*\//
+    const match = text.match(regex)
 
-        if (!match) {
-            return {}
+    if (!match) return {}
+
+    const headerContent = match[1]
+
+    const headerLines = headerContent.split("\n")
+    const headers: Record<string, string> = {}
+
+    headerLines.forEach((line) => {
+        const [key, ...valueParts] = line.split(":")
+
+        if (key && valueParts.length > 0) {
+            const value = valueParts.join(":").trim()
+            headers[key.replace("*", "").trim()] = value.trim()
         }
+    })
 
-        const headerContent = match[1]
-
-        const headerLines = headerContent.split("\n")
-        const headers: Record<string, string> = {}
-
-        headerLines.forEach((line) => {
-            const [key, ...valueParts] = line.split(":")
-
-            if (key && valueParts.length > 0) {
-                const value = valueParts.join(":").trim()
-                headers[key.replace("*", "").trim()] = value.trim()
-            }
-        })
-
-        return headers
-    } catch (error) {
-        throw new Error("Error reading or parsing the file:", {
-            cause: error,
-        })
-    }
+    return headers
 }
 
 /**
