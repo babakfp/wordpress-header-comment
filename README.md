@@ -24,7 +24,7 @@ parse(comment)
 
 Result:
 
-```js
+```
 {
     "Plugin Name": "...",
     Version: "...",
@@ -70,4 +70,42 @@ Result:
  * Version:     ...
  * Description: ...
  */
+```
+
+### Match
+
+```js
+import { match, parse, stringify } from "wordpress-header-comment"
+
+const content = `<?php
+/**
+ * Plugin Name: ...
+ * Version: ...
+ * Description: ...
+ */
+?>`
+
+const headers = parse(content)
+
+headers["Plugin Name"] = "???"
+headers["Version"] = "???"
+headers["Description"] = "???"
+
+const comment = stringify(headers)
+
+const { before, after } = match(content)
+
+const modifiedContent = before + comment + after
+```
+
+Result:
+
+```
+<?php
+/**
+ * Plugin Name: ???
+ * Version: ???
+ * Description: ???
+ */
+?>
 ```
