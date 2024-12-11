@@ -2,11 +2,13 @@
 
 A simple utility to parse and stringify WordPress header comments.
 
+- 🪵 [CHANGELOG](/CHANGELOG.md)
+
+## Usage
+
 ```bash
 npm i wordpress-header-comment
 ```
-
-## Usage
 
 ### Parse
 
