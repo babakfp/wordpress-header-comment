@@ -55,3 +55,19 @@ Result:
  * Description: ...
  */
 ```
+
+#### Alignment
+
+```js
+stringify(headers, { gap: 0 })
+```
+
+Result:
+
+```
+/**
+ * Plugin Name: ...
+ * Version:     ...
+ * Description: ...
+ */
+```
