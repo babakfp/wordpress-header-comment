@@ -97,3 +97,17 @@ export const stringify = (
 
     return ["/**", headerLines.join("\n"), " */"].join("\n")
 }
+
+/**
+ * Matches the `content` against a regex that extracts the text before and after a header comment, as well as the comment text itself.
+ */
+export const match = (content: string) => {
+    const regex = /([\s\S]*?)(\/\*\*[\s\S]*?\*\/)([\s\S]*)/
+    const match = content.match(regex)
+
+    return {
+        before: match?.[1] ?? "",
+        comment: match?.[2] ?? "",
+        after: match?.[3] ?? "",
+    }
+}
