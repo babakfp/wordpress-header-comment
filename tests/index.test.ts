@@ -20,3 +20,27 @@ test("parse", () => {
 test("stringify", () => {
     expect(stringify(headerCommentObject)).toBe(headerCommentText)
 })
+
+test("stringify - whitespaceGap 0", () => {
+    expect(
+        stringify(headerCommentObject, {
+            whitespaceGap: 0,
+        }),
+    ).toBe(`/**
+ * Plugin Name: ...
+ * Version:     ...
+ * Description: ...
+ */`)
+})
+
+test("stringify - whitespaceGap 10 - 1", () => {
+    expect(
+        stringify(headerCommentObject, {
+            whitespaceGap: 10 - 1,
+        }),
+    ).toBe(`/**
+ * Plugin Name:          ...
+ * Version:              ...
+ * Description:          ...
+ */`)
+})
