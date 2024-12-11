@@ -1,7 +1,7 @@
 {
     "name": "wordpress-header-comment",
     "description": "A simple utility to parse and stringify WordPress header comments.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "license": "MIT",
     "scripts": {
         "dev": "rimraf dist && tsc -w",
