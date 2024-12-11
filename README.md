@@ -8,28 +8,21 @@ npm i wordpress-header-comment
 
 ## Usage
 
-```js
-import { parse, stringify } from "wordpress-header-comment"
-
-parse()
-stringify()
-```
-
-## Examples
-
 ### Parse
 
-From:
+```js
+import { parse } from "wordpress-header-comment"
 
-```
-/**
+const comment = `/**
  * Plugin Name: ...
  * Version: ...
  * Description: ...
- */
+ */`
+
+parse(comment)
 ```
 
-To:
+Result:
 
 ```js
 {
@@ -41,17 +34,19 @@ To:
 
 ### Stringify
 
-From:
-
 ```js
-{
+import { stringify } from "wordpress-header-comment"
+
+const headers = {
     "Plugin Name": "...",
     Version: "...",
-    Description: "..."
+    Description: "...",
 }
+
+stringify(headers)
 ```
 
-To:
+Result:
 
 ```
 /**
