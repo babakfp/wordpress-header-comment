@@ -28,12 +28,5 @@
     "exports": {
         ".": "./dist/index.js"
     },
-    "keywords": [
-        "cli",
-        "svelte",
-        "create",
-        "template",
-        "scaffold"
-    ],
     "type": "module"
 }
